@@ -1,0 +1,28 @@
+#Trivia-Container{
+  margin: 3rem 6rem;
+  padding: 1rem 2rem;
+  border: 1px solid black;
+}
+
+#question-container{
+    color: black;
+}
+
+#options-container{
+   color: black;        
+}
+
+#next-button{
+   color: white;
+   padding: 0.3rem 0.4rem;
+   background-color: green;
+}
+#restart-button{
+    color: white;
+    padding: 0.3rem 0.4rem;
+    background-color: red;
+}
+#score-container{
+      display: block;
+}
+
