@@ -8,12 +8,6 @@ const scoreContainer = document.getElementById('score-container');
 let currentQuestion = {};
 const quizQuestion = data.question;
 
-
-
-
-   
-
-
 const loadQuestion = async () => {
 try{
     // const apiURL = `https://opentdb.com/api.php?amount=10`
