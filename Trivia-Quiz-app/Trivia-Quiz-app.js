@@ -5,9 +5,13 @@ const nextButton = document.getElementById('next-button');
 const restartButton = document.getElementById('restart-button');
 const scoreContainer = document.getElementById('score-container');
 
-nextButton.addEventListener('click', () => {
-     loadQuestion();
-})
+let currentQuestion = {};
+const quizQuestion = data.question;
+
+
+
+
+   
 
 
 const loadQuestion = async () => {
@@ -18,7 +22,8 @@ try{
     console.log("Fetched Data:", data); // Log data to see if API returns something
 
      if (data.results.length > 0) {
-            displayQuizQuestion(data.results[0]);   
+        currentQuestion = data.results[0];
+        displayQuizQuestion(currentQuestion);   
  }  else {
     throw new Error("No quiz questions found in API response.");
 } }
@@ -40,16 +45,28 @@ function displayQuizQuestion(data) {
 
     // Shuffle options
     quizOptions = quizOptions.sort(() => Math.random() - 0.5);
+  
     triviaContainer.innerHTML = 
     `<p><h1 id="question-container">${quizQuestion}</h1></p>
-      <ul>
-            ${quizOptions.options.map((option, index) => `
+     <ul>
+            ${quizOptions.map((option, index) => `
                 <li>
                     <input type="radio" name="option" value="${option}" id="option${index}">
                     <label for="option${index}">${option}</label>
                 </li>
             `).join('')}
         </ul>
-    ` 
+    <button id="next-button" onclick="nextButtonFunc()">Next</button>
+    <button id="restart-button">Restart</button>
+   ` 
 }
+function nextButtonFunc() {
+    const selectedOption = document.querySelector('input[name="option"]:checked'); 
+    if (selectedOption) {
+        loadQuestion();     
+    } else {
+   alert('pick an option')     
+    }   
+}
+
 loadQuestion();
